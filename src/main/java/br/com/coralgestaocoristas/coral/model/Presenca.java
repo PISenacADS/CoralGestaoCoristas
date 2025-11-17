@@ -3,8 +3,8 @@ package br.com.coralgestaocoristas.coral.model;
 public class Presenca {
     private int id;
     private int idAgenda;
-    private Integer idCorista; // ou null se for músico
-    private Integer idMusico;  // ou null se for corista
+    private Integer idCorista; 
+    private Integer idMusico;  
     private boolean presente;
 
     public Presenca() {}
@@ -17,7 +17,6 @@ public class Presenca {
         this.presente = presente;
     }
 
-    // getters e setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

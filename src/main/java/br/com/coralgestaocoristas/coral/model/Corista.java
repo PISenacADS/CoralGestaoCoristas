@@ -5,7 +5,7 @@ public class Corista {
     private String nome;
     private String email;
     private String telefone;
-    private String tipoVoz; // Soprano, Contralto, Tenor, Baixo
+    private String tipoVoz; 
 
     public Corista() {}
 
@@ -17,7 +17,6 @@ public class Corista {
         this.tipoVoz = tipoVoz;
     }
 
-    // getters e setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

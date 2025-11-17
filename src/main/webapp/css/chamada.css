@@ -1,0 +1,105 @@
+:root {
+    --bg-main: #202021;
+    --card-bg: #2c2c34;
+    --roxo: #8A2BE2;
+    --texto: #E0E0E0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--texto);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.chamada-container {
+    background-color: var(--card-bg);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    height: 85vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+.header-chamada {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.header-chamada h2 { margin: 0; font-size: 1.2em; color: white; }
+
+.btn-voltar {
+    background: none; border: 1px solid #555; color: #aaa;
+    padding: 5px 10px; border-radius: 5px; cursor: pointer;
+}
+
+.instrucao { color: #888; font-size: 0.9em; margin-bottom: 15px; }
+
+.lista-scroll {
+    flex: 1;
+    overflow-y: auto; 
+    padding-right: 5px;
+}
+
+.item-corista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e24;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.nome-corista { font-weight: bold; font-size: 1.1em; }
+
+.switch {
+    position: relative; display: inline-block; width: 50px; height: 26px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute; cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s; border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute; content: "";
+    height: 20px; width: 20px; left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s; border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--roxo); }
+input:checked + .slider:before { transform: translateX(24px); }
+
+.footer-chamada {
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-salvar {
+    background-color: var(--roxo); color: white;
+    border: none; padding: 12px 25px;
+    border-radius: 8px; font-weight: bold; cursor: pointer;
+    font-size: 1em;
+}
+.btn-salvar:hover { background-color: #7022b8; }

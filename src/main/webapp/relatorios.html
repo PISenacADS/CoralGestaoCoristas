@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,38 @@
     <link rel="stylesheet" href="css/relatorio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
     <div class="relatorio-container">
-        <h1>RELATORIO PERSONALIZADO</h1>
+        <h1>RELATORIO DE FREQUÊNCIA</h1>
 
         <div class="filtros-container">
-            <label for="periodo-select">PERÍODO:</label>
+            <label for="periodo-select">FILTRAR POR:</label>
             <div class="custom-select-wrapper">
-                <select id="periodo-select">
+                <select id="periodo-select" onchange="carregarRelatorio()">
                     <option value="30">Últimos 30 dias</option>
                     <option value="60">Últimos 60 dias</option>
                     <option value="90">Últimos 90 dias</option>
+                    <option value="365">Último Ano</option>
+                    <option value="0" selected>Todo o Período</option>
                 </select>
             </div>
 
-            <label for="tipo-select">TIPO:</label>
-            <div class="custom-select-wrapper">
-                <select id="tipo-select">
-                    <option value="Presença">Presença</option>
-                    <option value="Falta">Falta</option>
-                </select>
-            </div>
-            
-            <button type="button">Gerar Relatorio</button>
+            <button type="button" onclick="window.print()">
+                <i class="fas fa-print"></i> Salvar PDF
+            </button>
         </div>
 
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Buscar Corista">
+            <input type="text" id="input-busca" placeholder="Buscar Corista..." onkeyup="filtrarTabela()">
         </div>
 
         <div class="resultados-card">
+
+            
+
             <h2>RESULTADOS</h2>
             <div class="conteudo">
                 <div class="tabela">
@@ -46,19 +47,25 @@
                         <div class="col-nome">NOME</div>
                         <div class="col-num">PRESENÇAS</div>
                         <div class="col-num">FALTAS</div>
-                        <div class="col-num">PERCENTUAL</div>
+                        <div class="col-num">FREQ.</div>
                     </div>
                     <div id="dados-body">
-                        </div>
+                    </div>
                 </div>
                 <div class="grafico-container">
                     <div id="grafico-barras">
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="btn-footer">
+                <button type="button" class="btn-voltar" onclick="window.location.href='portal.html'">
+                    <i class="fas fa-arrow-left"></i> Voltar ao Portal
+                </button>
+            </div>
     </div>
 
     <script src="js/relatorio.js"></script>
 </body>
+
 </html>

@@ -1,16 +1,16 @@
 :root {
-    --bg-main: #202021; /* Fundo principal escuro */
-    --bg-header: #505256; /* Fundo da barra superior 'Cadastro' */
-    --card-bg: #505256; /* Fundo do cartão/formulário */
+    --bg-main: #202021; 
+    --bg-header: #505256; 
+    --card-bg: #505256; 
     --card-shadow: rgba(0, 0, 0, 0.7);
-    --input-bg: #171717; /* Fundo dos campos de input */
-    --input-border: #777777; /* Borda dos campos de input */
-    --input-placeholder: #dddddd; /* Cor do texto de placeholder */
-    --btn-submit-bg: #393440; /* Fundo do botão Cadastrar */
-    --btn-cancel-bg: #393440; /* Fundo do botão Cancelar */
-    --text-color: #FFFF; /* Cor do texto principal */
-    --title-color: #FFFF; /* Cor do título 'CADASTRO CORISTA' */
-    --notes-color: #FFFF; /* Cor sutil para as notas, se não usar imagem */
+    --input-bg: #171717; 
+    --input-border: #777777; 
+    --input-placeholder: #dddddd;
+    --btn-submit-bg: #393440; 
+    --btn-cancel-bg: #393440; 
+    --text-color: #FFFF; 
+    --title-color: #FFFF; 
+    --notes-color: #FFFF; 
 }
 
 * {
@@ -30,10 +30,10 @@ body {
     min-height: 100vh;
     flex-direction: column;
     
-    background-image: url('../img/music_notes_bg1.png'), url('../img/music_notes_bg2.png'); /* Sua imagem duplicada */
+    background-image: url('../img/music_notes_bg1.png'), url('../img/music_notes_bg2.png');
     background-repeat: no-repeat, no-repeat;
-    background-position: left center, right center; /* Uma de cada lado, centralizadas verticalmente */
-    background-size: 596px auto, 596px auto; /* Ajuste estes valores conforme necessário para o tamanho ideal */
+    background-position: left center, right center; 
+    background-size: 596px auto, 596px auto; 
 }
 
 .portal-container {

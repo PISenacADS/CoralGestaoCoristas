@@ -1,18 +1,17 @@
-/* === ESTILOS NOVOS E ATUALIZADOS === */
 
 :root {
-    --bg-main: #202021; /* Fundo principal escuro */
-    --bg-header: #505256; /* Fundo da barra superior 'Cadastro' */
-    --card-bg: #505256; /* Fundo do cartão/formulário */
+    --bg-main: #202021; 
+    --bg-header: #505256; 
+    --card-bg: #505256; 
     --card-shadow: rgba(0, 0, 0, 0.7);
-    --input-bg: #171717; /* Fundo dos campos de input */
-    --input-border: #777777; /* Borda dos campos de input */
-    --input-placeholder: #dddddd; /* Cor do texto de placeholder */
-    --btn-submit-bg: #393440; /* Fundo do botão Cadastrar */
-    --btn-cancel-bg: #393440; /* Fundo do botão Cancelar */
-    --text-color: #FFFF; /* Cor do texto principal */
-    --title-color: #FFFF; /* Cor do título 'CADASTRO CORISTA' */
-    --notes-color: #FFFF; /* Cor sutil para as notas, se não usar imagem */
+    --input-bg: #171717; 
+    --input-border: #777777; 
+    --input-placeholder: #dddddd; 
+    --btn-submit-bg: #393440; 
+    --btn-cancel-bg: #393440; 
+    --text-color: #FFFF; 
+    --title-color: #FFFF; 
+    --notes-color: #FFFF; 
 }
 
 * {
@@ -31,13 +30,12 @@ body {
     min-height: 100vh;
     flex-direction: column;
     
-    background-image: url('../img/music_notes_bg1.png'), url('../img/music_notes_bg2.png'); /* Sua imagem duplicada */
+    background-image: url('../img/music_notes_bg1.png'), url('../img/music_notes_bg2.png');
     background-repeat: no-repeat, no-repeat;
-    background-position: left center, right center; /* Uma de cada lado, centralizadas verticalmente */
-    background-size: 596px auto, 596px auto; /* Ajuste estes valores conforme necessário para o tamanho ideal */
+    background-position: left center, right center; 
+    background-size: 596px auto, 596px auto; 
 }
 
-/* O painel principal que segura tudo */
 .relatorio-container {
     background-color: #2c2c34;
     padding: 30px;
@@ -45,47 +43,41 @@ body {
     width: 100%;
     max-width: 800px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-
-    /* Organiza os itens internos em coluna (um embaixo do outro) */
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Espaço entre todos os elementos filhos */
+    gap: 25px; 
 }
 
-/* Estilo do Título Principal */
 .relatorio-container h1 {
     text-align: center;
     color: #E0E0E0;
     font-size: 1.5em;
-    letter-spacing: 2px; /* Espaçamento entre as letras */
+    letter-spacing: 2px; 
     margin: 0 0 10px 0;
 }
 
-/* O container dos filtros, usando CSS Grid para alinhar perfeitamente */
 .filtros-container {
     display: grid;
-    grid-template-columns: auto 1fr; /* Coluna 1 (labels) se ajusta, Coluna 2 (inputs) ocupa o resto */
+    grid-template-columns: auto 1fr; 
     align-items: center;
-    gap: 15px 20px; /* 15px de espaço vertical, 20px horizontal */
+    gap: 15px 20px; 
 }
 
-/* Posiciona o botão na segunda coluna, alinhado à direita */
 .filtros-container button {
-    grid-column: 2; /* Faz o botão começar na segunda coluna */
-    justify-self: end; /* Alinha o botão no final (direita) da célula do grid */
+    grid-column: 2; 
+    justify-self: end;
 }
 
-/* Ajustes nos seletores para não terem padding próprio */
 .periodo-container, .tipo_container {
     padding: 0;
 }
 
-/* Ajuste na largura da busca para ocupar todo o espaço */
 .search-container {
+    position: relative;
+    width: 100%;
     max-width: 100%;
+    margin-bottom: 20px;
 }
-
-/* === SEUS ESTILOS ANTIGOS (COM PEQUENOS AJUSTES) === */
 
 .periodo-container label, .tipo_container label, .filtros-container label {
     color: #E0E0E0; 
@@ -228,4 +220,65 @@ button:hover {
     background-color: #8A2BE2;
     border-radius: 5px 5px 0 0;
     transition: height 0.8s ease-out;
+}
+
+.btn-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-voltar {
+    background-color: #444; 
+    width: auto; 
+    padding: 12px 40px;
+}
+
+.btn-voltar:hover {
+    background-color: #666;
+}
+
+@media print {
+    .filtros-container, 
+    .search-container, 
+    .btn-voltar-container, 
+    button {
+        display: none !important;
+    }
+
+    body {
+        background-color: white !important;
+        background-image: none !important;
+        color: black !important;
+        height: auto !important;
+        display: block !important;
+    }
+
+    .relatorio-container {
+        box-shadow: none !important;
+        border: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .tabela-header {
+        color: black !important;
+        border-bottom: 2px solid black !important;
+    }
+    
+    .tabela-linha {
+        color: black !important;
+        border-bottom: 1px solid #ddd !important;
+    }
+
+    h1, h2 {
+        color: black !important;
+    }
+    
+    .grafico-barra {
+        background-color: #666 !important; 
+        -webkit-print-color-adjust: exact;
+    }
 }

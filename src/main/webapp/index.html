@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Coral</title>
+    <link rel="stylesheet" href="css/cadastro.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #202021;
+            background-image: url('img/music_notes_bg1.png'), url('img/music_notes_bg2.png');
+            background-repeat: no-repeat;
+            background-position: left center, right center;
+            background-size: 596px auto;
+        }
+        .login-card {
+            max-width: 400px; 
+            margin: 0 auto;
+        }
+        .erro-msg {
+            color: #ff6b6b;
+            background-color: rgba(255, 107, 107, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9em;
+            display: none; 
+            border: 1px solid #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-card login-card">
+        <h1 class="card-title">ACESSAR SISTEMA</h1>
+        
+        <div id="msg-erro" class="erro-msg">
+            <i class="fas fa-exclamation-circle"></i> Usuário ou senha inválidos!
+        </div>
+
+        <form action="login" method="POST" class="corista-form">
+            
+            <div class="input-group">
+                <label style="color: #ccc; margin-bottom: 5px; display:block;">Usuário</label>
+                <input type="text" name="usuario" required placeholder="Digite seu usuário" autocomplete="off">
+            </div>
+            
+            <div class="input-group">
+                <label style="color: #ccc; margin-bottom: 5px; display:block;">Senha</label>
+                <input type="password" name="senha" required placeholder="Digite sua senha">
+            </div>
+            
+            <div class="button-group" style="margin-top: 30px;">
+                <button type="submit" class="btn btn-submit" style="width: 100%;">ENTRAR</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('erro') === '1') {
+            document.getElementById('msg-erro').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

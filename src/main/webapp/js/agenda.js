@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const nomesDosMeses = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
 
     function carregarCalendario() {
-    
         fetch('agenda') 
             .then(response => response.json())
             .then(eventos => {
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(erro => {
                 console.error('Erro ao buscar eventos:', erro);
-
                 renderizarDias([]); 
             });
     }
@@ -63,6 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 divEvento.title = `${evento.horario} - ${evento.local_evento}`;
                 divEvento.innerHTML = `<div class="horario">${evento.horario}</div>${evento.titulo}`;
                 
+                divEvento.style.cursor = 'pointer';
+                divEvento.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                   
+                    window.location.href = `chamada.html?id_agenda=${evento.id}`;
+                });
+               
+
                 celula.appendChild(divEvento);
             });
 

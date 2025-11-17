@@ -4,12 +4,11 @@ public class Agenda {
 
     private int id;
     private String titulo;
-    private String dataEvento;    // yyyy-MM-dd
-    private String horario;       // HH:mm
+    private String dataEvento;    
+    private String horario;       
     private String localEvento;
-    private String tipo;          // ensaio / apresentacao
+    private String tipo;          
 
-    // GETTERS & SETTERS
 
     public int getId() {
         return id;

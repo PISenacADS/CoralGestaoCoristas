@@ -19,6 +19,7 @@ public class CoristaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = req.getParameter("action");
+        
         if (action == null || action.equals("list")) {
             try {
                 List<Corista> lista = dao.listarTodos();
@@ -46,7 +47,29 @@ public class CoristaServlet extends HttpServlet {
             } catch (SQLException e) {
                 throw new ServletException(e);
             }
-        } else if (action.equals("delete")) {
+        
+        } else if ("listJson".equals(action)) {
+            try {
+                List<Corista> lista = dao.listarTodos();
+                resp.setContentType("application/json; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+
+                out.print("[");
+                for (int i = 0; i < lista.size(); i++) {
+                    Corista c = lista.get(i);
+                    out.print("{");
+                    out.print("\"id\": " + c.getId() + ",");
+                    out.print("\"nome\": \"" + c.getNome() + "\"");
+                    out.print("}");
+                    
+                    if (i < lista.size() - 1) out.print(",");
+                }
+                out.print("]");
+            } catch (SQLException e) {
+                throw new ServletException(e);
+            }
+        
+        } else if ("delete".equals(action)) {
             int id = Integer.parseInt(req.getParameter("id"));
             try {
                 dao.excluir(id);
@@ -76,6 +99,7 @@ public class CoristaServlet extends HttpServlet {
             } catch (SQLException e) {
                 throw new ServletException(e);
             }
+            // Redireciona com sucesso para o formulário
             resp.sendRedirect("cadastro.html?status=success");
 
         } else if ("update".equals(action)) {
