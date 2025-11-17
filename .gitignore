@@ -1,0 +1,11 @@
+# Ignorar a pasta de compilação (O equivalente a 'dist' do Angular)
+/target/
+
+# Ignorar arquivos temporários de IDE (VS Code, Eclipse, IntelliJ)
+.vscode/
+.idea/
+*.classpath
+*.project
+*.settings/
+*.rds
+*.log

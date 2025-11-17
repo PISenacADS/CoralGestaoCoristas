@@ -30,7 +30,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     
-    background-image: url('img/music_notes_bg1.png'), url('img/music_notes_bg2.png'); /* Sua imagem duplicada */
+    background-image: url('../img/music_notes_bg1.png'), url('../img/music_notes_bg2.png'); /* Sua imagem duplicada */
     background-repeat: no-repeat, no-repeat;
     background-position: left center, right center; /* Uma de cada lado, centralizadas verticalmente */
     background-size: 596px auto, 596px auto; /* Ajuste estes valores conforme necessário para o tamanho ideal */

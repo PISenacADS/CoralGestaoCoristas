@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Corista</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="css/cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('status') === 'success') {
+            alert("Cadastrado com sucesso!");
+            window.history.replaceState(null, null, window.location.pathname);
+        }
+
+    </script>
+
     </header>
-        
-        <div class="form-card">
-            <h1 class="card-title">CADASTRO CORISTA</h1>
-            
-            <form action="#" method="POST" class="corista-form">
-                
-                <div class="input-group">
-                    <input type="text" id="nome" name="nome" required placeholder="Nome">
-                    </div>
-                
-                <div class="input-group">
-                    <input type="text" id="rg" name="rg" required placeholder="RG">
-                </div>
-                
-                <div class="input-group">
-                    <input type="text" id="musico" name="musico" required placeholder="Músico">
-                </div>
-                
-                <div class="input-group">
-                    <input type="text" id="voz" name="voz" required placeholder="Voz">
-                </div>
-                
-                <div class="button-group">
-                    <button type="submit" class="btn btn-submit">Cadastrar</button>
-                    <button type="button" class="btn btn-cancel">Cancelar</button>
-                </div>
-            </form>
-        </div>
+
+    <div class="form-card">
+
+        <h1 class="card-title">CADASTRO CORISTA</h1>
+
+        <form action="coristas" method="POST" class="corista-form">
+
+            <input type="hidden" name="action" value="create">
+
+            <div class="input-group">
+                <input type="text" id="nome" name="nome" required placeholder="Nome">
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="email" name="email" required placeholder="Email">
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="telefone" name="telefone" required placeholder="Telefone">
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="voz" name="tipoVoz" required placeholder="Voz (Ex: Tenor, Soprano)">
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-submit">Cadastrar</button>
+
+                <button type="button" class="btn btn-cancel" onclick="window.location.href='portal.html'">
+                    Voltar
+                </button>
+            </div>
+        </form>
+    </div>
     </div>
 </body>
+
 </html>

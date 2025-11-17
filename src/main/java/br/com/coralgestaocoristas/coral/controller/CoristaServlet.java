@@ -76,7 +76,7 @@ public class CoristaServlet extends HttpServlet {
             } catch (SQLException e) {
                 throw new ServletException(e);
             }
-            resp.sendRedirect("coristas?action=list");
+            resp.sendRedirect("cadastro.html?status=success");
 
         } else if ("update".equals(action)) {
             Corista c = new Corista();

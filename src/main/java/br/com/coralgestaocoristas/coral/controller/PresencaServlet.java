@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/presencas")
+//@WebServlet("/presencas")
 public class PresencaServlet extends HttpServlet {
 
     private PresencaDAO presencaDAO;
