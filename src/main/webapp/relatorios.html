@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Personalizado</title>
+    <link rel="stylesheet" href="relatorio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="relatorio-container">
+        <h1>RELATORIO PERSONALIZADO</h1>
+
+        <div class="filtros-container">
+            <label for="periodo-select">PERÍODO:</label>
+            <div class="custom-select-wrapper">
+                <select id="periodo-select">
+                    <option value="30">Últimos 30 dias</option>
+                    <option value="60">Últimos 60 dias</option>
+                    <option value="90">Últimos 90 dias</option>
+                </select>
+            </div>
+
+            <label for="tipo-select">TIPO:</label>
+            <div class="custom-select-wrapper">
+                <select id="tipo-select">
+                    <option value="Presença">Presença</option>
+                    <option value="Falta">Falta</option>
+                </select>
+            </div>
+            
+            <button type="button">Gerar Relatorio</button>
+        </div>
+
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Buscar Corista">
+        </div>
+
+        <div class="resultados-card">
+            <h2>RESULTADOS</h2>
+            <div class="conteudo">
+                <div class="tabela">
+                    <div class="tabela-header">
+                        <div class="col-nome">NOME</div>
+                        <div class="col-num">PRESENÇAS</div>
+                        <div class="col-num">FALTAS</div>
+                        <div class="col-num">PERCENTUAL</div>
+                    </div>
+                    <div id="dados-body">
+                        </div>
+                </div>
+                <div class="grafico-container">
+                    <div id="grafico-barras">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="relatorio.js"></script>
+</body>
+</html>

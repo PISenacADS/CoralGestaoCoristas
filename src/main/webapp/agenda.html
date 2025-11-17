@@ -1,1 +1,40 @@
- 
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Apresentação</title>
+    <link rel="stylesheet" href="agenda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="agenda-container">
+        <h2>AGENDA DE APRESENTAÇÃO</h2>
+
+        <div class="agenda-header">
+            <button class="btn-nav">&lt;&lt; Mês anterior &gt;&gt;</button>
+            <button class="btn-add"><i class="fas fa-plus"></i> Adicionar evento</button>
+        </div>
+
+        <h3 id="mes-ano-titulo">SETEMBRO</h3>
+
+        <div class="calendario">
+            <div class="dias-semana">
+                <div>DOM</div>
+                <div>SEG</div>
+                <div>TER</div>
+                <div>QUA</div>
+                <div>QUI</div>
+                <div>SEX</div>
+                <div>SÁB</div>
+            </div>
+            <div class="dias-mes" id="calendario-dias">
+                </div>
+        </div>
+    </div>
+
+    <script src="agenda.js"></script>
+
+</body>
+</html>
