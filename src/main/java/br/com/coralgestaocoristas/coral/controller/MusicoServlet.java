@@ -19,8 +19,30 @@ public class MusicoServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String action = req.getParameter("action");
-        if (action == null || action.equals("list")) {
+
+        if ("listJson".equals(action)) {
             try {
+                List<Musico> lista = dao.listarTodos();
+                resp.setContentType("application/json; charset=UTF-8");
+                PrintWriter out = resp.getWriter();
+
+                out.print("[");
+                for (int i = 0; i < lista.size(); i++) {
+                    Musico m = lista.get(i);
+                    out.print("{");
+                    out.print("\"id\": " + m.getId() + ",");
+                    out.print("\"nome\": \"" + m.getNome() + " (" + m.getInstrumento() + ")\"");
+                    out.print("}");
+                    if (i < lista.size() - 1) out.print(",");
+                }
+                out.print("]");
+            } catch (SQLException e) {
+                throw new ServletException(e);
+            }
+        
+        } else if (action == null || action.equals("list")) {
+             try {
+               
                 List<Musico> lista = dao.listarTodos();
                 resp.setContentType("text/html; charset=UTF-8");
                 PrintWriter out = resp.getWriter();
@@ -42,17 +64,18 @@ public class MusicoServlet extends HttpServlet {
                 out.println("</table>");
                 out.println("</body></html>");
 
-            } catch (SQLException e) {
+             } catch (SQLException e) {
                 throw new ServletException(e);
-            }
+             }
+
         } else if ("delete".equals(action)) {
-            int id = Integer.parseInt(req.getParameter("id"));
-            try {
-                dao.excluir(id);
-            } catch (SQLException e) {
-                throw new ServletException(e);
-            }
-            resp.sendRedirect("musicos?action=list");
+             int id = Integer.parseInt(req.getParameter("id"));
+             try { 
+                 dao.excluir(id); 
+             } catch (SQLException e) { 
+                 throw new ServletException(e); 
+             }
+             resp.sendRedirect("musicos?action=list");
         }
     }
 
@@ -74,7 +97,9 @@ public class MusicoServlet extends HttpServlet {
             } catch (SQLException e) {
                 throw new ServletException(e);
             }
-            resp.sendRedirect("musicos?action=list");
+           
+            resp.sendRedirect("musicos.html?status=success"); 
+        
         } else if ("update".equals(action)) {
             Musico m = new Musico();
             m.setId(Integer.parseInt(req.getParameter("id")));

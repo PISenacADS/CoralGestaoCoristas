@@ -9,12 +9,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnNovoEvento = document.getElementById('btn-novo-evento');
     const btnCancelarModal = document.getElementById('btn-cancelar-modal');
     const formAgenda = document.getElementById('form-agenda');
+    
+    const selectMusico = document.getElementById('select-musico');
 
     let dataAtual = new Date();
     let mesAtual = dataAtual.getMonth();
     let anoAtual = dataAtual.getFullYear();
 
     const nomesDosMeses = ["JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"];
+
+    function carregarMusicos() {
+        
+        if (!selectMusico) return;
+
+        fetch('musicos?action=listJson') 
+            .then(res => res.json())
+            .then(musicos => {
+                
+                selectMusico.innerHTML = '<option value="0">-- Nenhum / A definir --</option>';
+                
+                musicos.forEach(m => {
+                    const option = document.createElement('option');
+                    option.value = m.id;
+                    
+                    option.textContent = m.nome; 
+                    selectMusico.appendChild(option);
+                });
+            })
+            .catch(erro => console.error('Erro ao carregar músicos:', erro));
+    }
 
     function carregarCalendario() {
         fetch('agenda') 
@@ -59,16 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 else divEvento.classList.add('evento-concerto');
 
                 divEvento.title = `${evento.horario} - ${evento.local_evento}`;
-                divEvento.innerHTML = `<div class="horario">${evento.horario}</div>${evento.titulo}`;
+                
+                let conteudoHtml = `<div class="horario">${evento.horario.slice(0, 5)}</div><strong>${evento.titulo}</strong>`;
+                
+                if (evento.nome_musico) {
+                    conteudoHtml += `<div style="font-size:0.8em; color:#ddd; margin-top:2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">🎹 ${evento.nome_musico}</div>`;
+                }
+                
+                divEvento.innerHTML = conteudoHtml;
                 
                 divEvento.style.cursor = 'pointer';
                 divEvento.addEventListener('click', (e) => {
                     e.stopPropagation(); 
-                   
                     window.location.href = `chamada.html?id_agenda=${evento.id}`;
                 });
-               
-
+                
                 celula.appendChild(divEvento);
             });
 
@@ -120,5 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(erro => console.error('Erro:', erro));
     });
 
-    carregarCalendario();
+    carregarMusicos();
+    carregarCalendario(); 
 });

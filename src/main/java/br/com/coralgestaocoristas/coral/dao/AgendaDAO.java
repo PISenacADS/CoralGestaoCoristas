@@ -10,7 +10,8 @@ import java.util.List;
 public class AgendaDAO {
 
     public void inserir(Agenda a) throws SQLException {
-        String sql = "INSERT INTO agenda (titulo, data_evento, horario, local_evento, tipo) VALUES (?, ?, ?, ?, ?)";
+        
+        String sql = "INSERT INTO agenda (titulo, data_evento, horario, local_evento, tipo, id_musico) VALUES (?, ?, ?, ?, ?, ?)";
 
         Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -20,6 +21,12 @@ public class AgendaDAO {
         stmt.setString(3, a.getHorario());
         stmt.setString(4, a.getLocalEvento());
         stmt.setString(5, a.getTipo());
+        
+        if (a.getIdMusico() > 0) {
+            stmt.setInt(6, a.getIdMusico());
+        } else {
+            stmt.setNull(6, java.sql.Types.INTEGER);
+        }
 
         stmt.executeUpdate();
         stmt.close();
@@ -29,7 +36,10 @@ public class AgendaDAO {
     public List<Agenda> listarTodos() throws SQLException {
         List<Agenda> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM agenda ORDER BY data_evento ASC";
+        String sql = "SELECT a.*, m.nome as nome_musico " +
+                     "FROM agenda a " +
+                     "LEFT JOIN musicos m ON a.id_musico = m.id " +
+                     "ORDER BY a.data_evento ASC";
 
         Connection conn = DBConnection.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -43,6 +53,9 @@ public class AgendaDAO {
             a.setHorario(rs.getString("horario"));
             a.setLocalEvento(rs.getString("local_evento"));
             a.setTipo(rs.getString("tipo"));
+            
+            a.setIdMusico(rs.getInt("id_musico"));
+            a.setNomeMusico(rs.getString("nome_musico")); 
 
             lista.add(a);
         }

@@ -7,8 +7,17 @@ public class Agenda {
     private String dataEvento;    
     private String horario;       
     private String localEvento;
-    private String tipo;          
+    private String tipo;
+    private int idMusico;
+    private String nomeMusico;          
 
+    public int getIdMusico() { return idMusico; }
+    
+    public void setIdMusico(int idMusico) { this.idMusico = idMusico; }
+
+    public String getNomeMusico() { return nomeMusico; }
+
+    public void setNomeMusico(String nomeMusico) { this.nomeMusico = nomeMusico; }
 
     public int getId() {
         return id;

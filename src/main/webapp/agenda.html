@@ -19,9 +19,7 @@
 
         <div class="agenda-header">
             <button id="btn-anterior" class="btn-nav">&lt;&lt; Anterior</button>
-
             <button id="btn-novo-evento" class="btn-add"><i class="fas fa-plus"></i> Adicionar evento</button>
-
             <button id="btn-proximo" class="btn-nav">Próximo &gt;&gt;</button>
         </div>
 
@@ -38,7 +36,7 @@
                 <div>SÁB</div>
             </div>
             <div class="dias-mes" id="calendario-dias">
-            </div>
+                </div>
         </div>
     </div>
 
@@ -46,22 +44,27 @@
         <div class="modal-content">
             <h3>Novo Evento</h3>
             <form id="form-agenda">
+                
                 <div class="campo">
                     <label>Título:</label>
                     <input type="text" name="titulo" required>
                 </div>
+                
                 <div class="campo">
                     <label>Data:</label>
                     <input type="date" name="data_evento" required>
                 </div>
+                
                 <div class="campo">
                     <label>Horário:</label>
                     <input type="time" name="horario" required>
                 </div>
+                
                 <div class="campo">
                     <label>Local:</label>
                     <input type="text" name="local_evento" required>
                 </div>
+                
                 <div class="campo">
                     <label>Tipo:</label>
                     <select name="tipo" required>
@@ -69,6 +72,14 @@
                         <option value="apresentacao">Apresentação</option>
                     </select>
                 </div>
+
+                <div class="campo">
+                    <label>Músico Responsável:</label>
+                    <select name="idMusico" id="select-musico">
+                        <option value="0">-- Nenhum / A definir --</option>
+                        </select>
+                </div>
+
                 <div class="modal-buttons">
                     <button type="submit" class="btn-salvar">Salvar</button>
                     <button type="button" id="btn-cancelar-modal" class="btn-cancelar">Cancelar</button>
@@ -80,5 +91,4 @@
     <script src="js/agenda.js"></script>
 
 </body>
-
 </html>

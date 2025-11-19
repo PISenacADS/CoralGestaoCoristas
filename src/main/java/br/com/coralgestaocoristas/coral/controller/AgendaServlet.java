@@ -41,7 +41,12 @@ public class AgendaServlet extends HttpServlet {
                 out.print("\"data_evento\": \"" + a.getDataEvento() + "\",");
                 out.print("\"horario\": \"" + a.getHorario() + "\",");
                 out.print("\"local_evento\": \"" + a.getLocalEvento() + "\",");
-                out.print("\"tipo\": \"" + a.getTipo() + "\"");
+                out.print("\"tipo\": \"" + a.getTipo() + "\",");
+                
+
+                String nomeMusico = (a.getNomeMusico() != null) ? a.getNomeMusico() : "";
+                out.print("\"nome_musico\": \"" + nomeMusico + "\"");
+                
                 out.print("}");
 
                 if (i < lista.size() - 1) out.print(",");
@@ -67,6 +72,16 @@ public class AgendaServlet extends HttpServlet {
         String horario = req.getParameter("horario");
         String local = req.getParameter("local_evento");
         String tipo = req.getParameter("tipo");
+        
+        int idMusico = 0;
+        try {
+            String idStr = req.getParameter("idMusico");
+            if (idStr != null && !idStr.isEmpty()) {
+                idMusico = Integer.parseInt(idStr);
+            }
+        } catch (NumberFormatException e) {
+            idMusico = 0; 
+        }
 
         Agenda agenda = new Agenda();
         agenda.setTitulo(titulo);
@@ -74,12 +89,14 @@ public class AgendaServlet extends HttpServlet {
         agenda.setHorario(horario);
         agenda.setLocalEvento(local);
         agenda.setTipo(tipo);
+        
+        
+        agenda.setIdMusico(idMusico);
 
         PrintWriter out = resp.getWriter();
 
         try {
             agendaDAO.inserir(agenda);
-
             out.print("{\"status\": \"ok\"}");
 
         } catch (Exception e) {

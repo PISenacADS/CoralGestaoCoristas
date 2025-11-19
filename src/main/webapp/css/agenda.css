@@ -161,38 +161,53 @@ body {
 }
 
 .dias-mes > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 70px;
-    background-color: #333;
+    background-color: #2c2c34;
     border-radius: 5px;
     padding: 5px;
-    font-weight: bold;
-    color: #ddd;
-    box-sizing: border-box;
+    
+    height: 100px; 
+    
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
 }
 
-.dias-mes .dia-vazio {
-    background-color: transparent;
+.dias-mes > div::-webkit-scrollbar {
+    display: none;
 }
 
 .evento {
-    padding: 3px;
+    width: 100%; 
+    padding: 4px;
     border-radius: 4px;
-    font-size: 0.7em;
     color: white;
-    text-align: center;
+    
+    font-size: 0.75em; 
+    line-height: 1.2; 
+    
+    word-wrap: break-word; 
+    white-space: normal;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .evento-ensaio {
-    background-color: #1E8449; 
-}
-
-.evento-concerto {
     background-color: #8A2BE2; 
+}
+.evento-concerto {
+    background-color: #28a745; 
 }
 
 .evento .horario {
     font-weight: bold;
+    font-size: 0.9em;
+    opacity: 0.9;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 2px;
+    padding-bottom: 2px;
 }
